@@ -1,46 +1,57 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# ~/.config/starship.toml
+# ### ------------
+# ### "Power10 bg"
+# ### ------------
+# ### Variant 2 with background: two line prompt, with background in top line, separators on left side
+# - This preset is inspired by a [powerlevel10k](https://github.com/romkatv/powerlevel10k) configuration variant.
 #
-# ### Variant 2bg: two line prompt, with background in top line, separators on left side
-# *** Borrowed from a design seen in a zsh (should be from https://github.com/romkatv/powerlevel10k)
-#
-# - No filling solid line in top row: 
-#   Replace '$fill\' with just one character '\' or just completely delete the line that contains '$fill\' further down,
-#   within the format-block: format = """ ... """.
-#
-# - '$line_break': everything from the next line on refers to the second line of the prompt.
-#
-# - Some modules listed further down will not show up (all the time), as their default value is 'disabled = true' or
-#   they are only displayed under certain conditions.
-#
-# - Symbols:
-#   Don't be confused if you see this toml file via web browser on a website, gist, ... and you don't see any "real" symbols further down.
-#   If Nerd-fonts are already installed on your system (e.g. MesloLG Nerd Font, FiraCode Nerd Font, ...) it should work.
+# - Recommended / tested with Font 'MesloLGS NF Regular' from: Meslo Nerd Font patched for Powerlevel10k
+#   Link: https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#manual-font-installation
+#         --> "Manual font installation", with currently 4 Font Types
 
+# - If you do not want the filling solid line in top row:
+#   set the fill symbol to ' '
+# - Shell [shell]:
+#   If you want to see the content of the shell module, search for [shell] and change 'disabled = true' to false
+# - '$line_break': everything from the next line on refers to the second line of the prompt
+# - Some modules listed further down will not show up (all the time), as their default value is 'disabled = true' or
+#   they are only displayed under certain conditions
+# - Symbols:
+#   Don't be confused if you don't see any "real" symbols here. If Nerd-fonts are installed on your system, it should work.
 
 # Customizing the prompt (and placing desired modules at desired position and sequence):
+# ╭╴ # \u256D\u2574
+# ╰╴ # \u2570\u2574
 format = """
 [╭╴](fg:#505050)\
 $os\
+$shell\
 $username\
 $hostname\
 $sudo\
 $directory\
+$direnv\
+$php\
+$python\
 $git_branch$git_commit$git_state$git_metrics$git_status\
+[ ](fg:#252525)\
+$fill\
+$fill\
+[ ](fg:#252525)\
+$status\
 $jobs\
 $memory_usage\
-[ ](fg:#252525)\
 $cmd_duration\
-$fill\
 $line_break\
+\
 [╰╴](fg:#505050)\
-[$status\
-$localip\
-$character]($style)
-"""
+[$character]($style)"""
 
+# move the rest of the prompt to the right
+right_format = """
+[$localip]($style)"""
 
 # Inserts a blank line between shell prompts:
 add_newline = true
@@ -48,49 +59,69 @@ add_newline = true
 # Customization and activation of some modules:
 # Listed in the order of their position in the module row above
 [os]
-format = "[](fg:#252525)[$symbol ]($style)[ ](bg:#252525)"
+format = "[](fg:#252525)[$symbol]($style)(bg:#252525)"
 style = "fg:#AAAAAA bg:#252525"
 disabled = false
 
 [os.symbols]
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = ""
-CentOS = ""
-Debian = ""
-DragonFly = "🐉" # ""
-Emscripten = "🔗"
-EndeavourOS = "" # ""
-Fedora = ""
-FreeBSD = ""
-Garuda = ""
-Gentoo = ""
-HardenedBSD = "聯"
-Illumos = "🐦"
-Linux = ""
-Macos = ""
-Manjaro = ""
-Mariner = ""
-MidnightBSD = "🌘"
-Mint = ""
-NetBSD = ""
-NixOS = ""
-OpenBSD = "" # ""
-OpenCloudOS = "☁️"
-openEuler = ""
-openSUSE = ""
-OracleLinux = "⊂⊃"
-Pop = "" # ""
-Raspbian = ""
-Redhat = ""
-RedHatEnterprise = ""
-Redox = "🧪"
-Solus = "" # " "
-SUSE = ""
-Ubuntu = ""
-Unknown = ""
-Windows = ""
+AIX = "AIX "
+Alpaquita = "\uf26a " # \uf26a  # \ue3a5\ue390 
+AlmaLinux = "\uf31d " # 
+Alpine = "\uf300 " # ""
+Amazon = "\uf270 " # ""
+Android = "\ue70e " # ""
+Arch = "\uf303 " # ""
+Artix = "\uf31f " # 
+CentOS = "\uf304 " # ""
+Debian = "\uf306 " # ""
+DragonFly = "\ueef8 " #    🐉
+Emscripten = "\u26A1 " # ⚡
+EndeavourOS = "\uf322 " # "" # 
+Fedora = "\uf30a " # ""
+FreeBSD = "\uf30c " # ""
+Garuda = "\uf337 " # ""
+Gentoo = "\uf30d " # ""
+HardenedBSD = "\uf132 " # 
+Illumos = "\uf326 " # "🐦"
+Kali = "\uf327 " # 
+Linux = "\uf17c " # ""
+Mabox = "\uf1b2 " #  📦
+Macos = "\uf302 " # ""
+Manjaro = "\uf312 " # ""
+Mariner = "\ue7ae " # \ue7ae 
+MidnightBSD = "\ue3e0 " # 🌘
+Mint = "\uf30e " # ""
+NetBSD = "\u2691 " # ⚑
+NixOS = "\uf313 " # ""
+OpenBSD = "\uf328 " # ""
+OpenCloudOS = "\uf0c2 " # 
+openEuler = "\u2208 " # \u2208 ∈
+openSUSE = "\uf314 " # ""
+OracleLinux = "\u213A " # \u213A ℺ # ⊂⊃ \u2282\u2283
+Pop = "\uf32a " # ""
+Raspbian = "\uf315 " # ""
+Redhat = "\uf316 " # "" # 󱄛
+RedHatEnterprise = "\uf316 " # "" # 󱄛
+RockyLinux = "\uf32b " # 
+Redox = "\uf331 " #   󰺕
+Solus = "\uf32d " # "" # " "
+SUSE = "\uef6d " # ""
+Ubuntu = "\uf31b " # ""
+Ultramarine = "󱙳 " # 🔷
+Unknown = "\uf108 " # ""
+Void = "\uf32e " #  
+Windows = "\uf17a " # ""
+
+[shell]
+format = '[$indicator]($style)()'
+style = 'fg:#424242 bg:#252525'
+# empty indicator (''): e.g. if you do not want to see indicator for your standard shell
+zsh_indicator = '%_ ' # '%_ ' '󰰶 '
+bash_indicator = '\$_ ' # "\uebca " ' ' '\$_ '
+fish_indicator = '>> ' # "\uee41 " '󰈺 ' '>>_ '
+powershell_indicator = '>_ ' # "\uebc7 " ' ' '>_'
+unknown_indicator = '?_ ' # '?_ ' ' '
+disabled = true # set to false if you want to see the shell indicator
 
 [username]
 format = '[ ](fg:green bold bg:#252525)[$user]($style)[ ](bg:#252525)'
@@ -113,7 +144,7 @@ symbol = ' ' # ' ❯ '
 disabled = false
 
 [directory]
-format = '[ ](fg:cyan bold bg:#252525)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)'
+format = '[ ](fg:cyan bold bg:#252525)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path ]($style)'
 style = 'fg:cyan bold bg:#252525'
 home_symbol = ' ~'
 read_only = ' ' # ' ' # ' ''
@@ -121,22 +152,45 @@ read_only_style = 'fg:cyan bg:#252525'
 truncation_length = 3
 truncation_symbol = '…/'
 truncate_to_repo = true
-repo_root_format = '[ ](fg:cyan bold bg:#252525)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:#252525)'
+repo_root_format = '[ ](fg:cyan bold bg:#252525)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ]($style)'
 repo_root_style	= 'fg:cyan bold bg:#252525'
 use_os_path_sep = true
 disabled = false
 
+[direnv]
+symbol = 'direnv'
+style = 'fg:#505050 bold bg:#252525'
+format = "[❯ $symbol $loaded/$allowed ]($style)"
+allowed_msg = 'a' # 'ok' # '✓'
+not_allowed_msg = '!a' # 'nok' # '!'
+denied_msg = 'x' # '✘'
+loaded_msg = '+' # "\ueabc" # \ueabc  # '->' # 'yo' # '󰗡' # \udb81\udde1 # '󱥸✓' # '󱥸✓' # 
+unloaded_msg = '-' # "\ueabc!" # \ueabc ! # '->!' # 'no' # '󰅚' # '󱥸!' \udb86\udd78
+disabled = false
+
+[php]
+format = "[[ \u3009](fg:#7a86b8 bg:#252525)[$symbol](fg:#7a86b8 italic bg:#252525)($version )]($style)"
+style = 'fg:#7a86b8 bg:#252525)'
+symbol = "php " # \ue73d  # 󰌟
+
+[python]
+format = "[\u3009${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
+style = 'fg:yellow bg:#252525'
+symbol = "\ue73c " # 
+pyenv_version_name = true
+
 [git_branch]
 format = '[❯ $symbol $branch(:$remote_branch)]($style)[ ](bg:#252525)'
 style = 'fg:#E04D27 bg:#252525'
-symbol = ''
+symbol = ''
 #ignore_branches = ['master', 'main']
 
 [git_commit]
 format = '[\($hash$tag\)]($style)[ ](bg:#252525)'
 style = 'fg:#E04D27 bg:#252525'
 commit_hash_length = 8
-tag_symbol = ' ' # ' ''
+tag_symbol = '  ' # '  ''
+tag_disabled = false
 disabled = false
 
 [git_metrics]
@@ -146,54 +200,53 @@ deleted_style = 'fg:#E04D27 bg:#252525'
 disabled = false
 
 [git_status]
-# place symbols before '$count'
 format = '([$all_status$ahead_behind]($style))'
-style = 'fg:#E04D27'
-conflicted = '[${count} ](fg:red)'
-ahead = '[⇡${count} ](fg:yellow)'
-behind = '[⇣${count} ](fg:yellow)'
-diverged = '[⇕${ahead_count}⇡${behind_count}⇣ ](fg:yellow)' # ⇕ ↕ ⇳ 󰹹 󰹺 󰧈 
-up_to_date = '[✓ ](fg:green)'
-untracked = '[ﳇ${count} ](fg:red)' # ' ' # '? '
-stashed = '[${count} ](fg:#A52A2A)' # '📦 '# ' ' # ' ' # ' ' # ' ' 
-modified = '[󰷉${count} ](fg:#C8AC00)' # '📝' # '! ' #  #  # 
-staged = '[${count} ](fg:green)' # '+ '
-renamed = '[${count} ](fg:yellow)' # ' ' # '﫦' # ᴂ #  #  #  # ﳳ
-deleted = '[﯊${count} ](fg:orange)' # '🗑 ' '- '
+style = 'fg:#E04D27 bg:#252525'
+conflicted = '[${count} ](fg:red bg:#252525)'
+ahead = '[⇡${count} ](fg:yellow bg:#252525)'
+behind = '[⇣${count} ](fg:yellow bg:#252525)'
+diverged = '[⇕${ahead_count}⇡${behind_count}⇣ ](fg:yellow bg:#252525)' # ⇕ ↕ ⇳ 󰹹 󰹺 󰧈
+up_to_date = '[✓ ](fg:green bg:#252525)'
+untracked = '[ﳇ${count} ](fg:red bg:#252525)' # ' ' # '? '
+stashed = '[${count} ](fg:#A52A2A bg:#252525)' # ' '# ' ' # ' ' # ' ' # ' '
+modified = '[󰷉${count} ](fg:#C8AC00 bg:#252525)' # '📝' # '! ' #  #  # 
+staged = '[${count} ](fg:green bg:#252525)' # '+ '
+renamed = '[${count} ](fg:yellow bg:#252525)' # ' ' # '﫦' # ᴂ #  #  #  # ﳳ
+deleted = '[﯊${count} ](fg:orange bg:#252525)' # '🗑 ' '- '
+disabled = false
+
+[fill]
+style = 'fg:#505050'
+symbol = "\u2500" # "\u2500" "─" # no line: ' '
+
+[status]
+format = '[$symbol $status $hex_status(  $signal_number-$signal_name)]($style)'
+style = 'fg:red bg:#252525'
+symbol = ' ✘'
 disabled = false
 
 [jobs]
-format = '[  ](fg:blue bold bg:#252525)[$number$symbol]($style)'
+format = "[ \ueab5 ](fg:blue bold bg:#252525)[$symbol $number]($style)"
 style = 'fg:blue bg:#252525'
-symbol = '省' # '廒' # '󰜎' # '' # '✦'
+symbol = "\ueb7b" # \ueb7b  \uef0c 省 # '廒' # '󰜎' # ''
 symbol_threshold = 1
-number_threshold = 4
+number_threshold = 2
 disabled = false
 
 [memory_usage]
-format = '[  ](fg:purple bold bg:#252525)[$symbol ${ram} ${swap}]($style)'
+format = "[ \ueab5 ](fg:purple bold bg:#252525)[$symbol ${ram} ${swap}]($style)"
 style = 'fg:purple bg:#252525'
 symbol = '﬙ 北' # '﬙ 痢' # '﬙ / 󰾵' # '󰍛 󰾵' # '﬙ 󰾴' # '﬙ 󰾶' # '﬙ 󰾷' '﬙ 󰣂'
 threshold = 75
 disabled = false
 
 [cmd_duration]
-format = '[  $duration ]($style)'
-style = 'fg:yellow'
+format = "[ \ueab5 \uf017 $duration]($style)" # \ueab5 \uf017   
+style = 'fg:yellow bg:#252525'
 min_time = 500
 disabled = false
 
-[fill]
-style = 'fg:#505050'
-symbol = '─'
-
-[status]
-format = '[$symbol$status $hex_status  $signal_number-$signal_name ]($style)'
-style = 'fg:red'
-symbol = '✘ '
-disabled = false
-
 [localip]
-format = '[$localipv4 ](fg:green bold)'
+format = '[$localipv4](fg:green bold)'
 ssh_only = true
 disabled = false
