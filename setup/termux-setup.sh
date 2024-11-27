@@ -76,7 +76,7 @@ if pkg info -I neovim >/dev/null 2>&1; then
 fi
 
 # Custom Terminal
-if [ -d ~/.config ]; then
+#if [ -d ~/.config ]; then
     echo "Would you like to install dotfiles and other tools?"
     select dotfiles_choice in "Yes" "No"; do
         case $dotfiles_choice in
@@ -116,5 +116,5 @@ if [ -d ~/.config ]; then
         esac
         break
     done
-fi
+#fi
 echo "You are now ready to start your journey. [Termux Setup Complete]"
