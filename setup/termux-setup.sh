@@ -89,6 +89,7 @@ select dotfiles_choice in "Yes" "No"; do
             if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
                 echo "Dotfiles cloned successfully."
                 cp -r ~/.config/dotfiles/* ~/.config/
+                mv ~/.config/font.tff ~/.termux
             else
                 echo "Error cloning dotfiles. Please check the Git output for more information."
             fi
@@ -111,13 +112,6 @@ select fish_choice in "Yes" "No"; do
             else
                 echo "Error installing Fish, Starship, Tealdeer, and Fastfetch. Please check the package manager output for more information."
             fi
-
-            # Install Oh-my-fish
-            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | bash; then
-                echo "Oh-my-fish installed successfully."
-            else
-                echo "Error installing Oh-my-fish. Please check the installation output for more information."
-            fi
             ;;
         "No")
             echo "Fish shell not installed."
@@ -125,4 +119,31 @@ select fish_choice in "Yes" "No"; do
     esac
     break
 done
+
 echo "You are now ready to start your journey. [Termux Setup Complete]"
+sleep 5
+
+termux-reload-settings
+echo "But......"
+sleep 10
+
+# Prompt to install Oh-my-fish
+echo "Would you like to install Oh-my-fish?"
+select ohmyfish_choice in "Yes" "No"; do
+    case $ohmyfish_choice in
+        "Yes")
+            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | bash; then
+                echo "Oh-my-fish installed successfully."
+            else
+                echo "Error installing Oh-my-fish. Please check the installation output for more information."
+            fi
+            ;;
+        "No")
+            echo "Oh-my-fish not installed."
+            ;;
+    esac
+    break
+done
+
+wait
+echo
