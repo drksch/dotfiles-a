@@ -113,7 +113,7 @@ select fish_choice in "Yes" "No"; do
             fi
 
             # Install Oh-my-fish
-            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
+            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | bash; then
                 echo "Oh-my-fish installed successfully."
             else
                 echo "Error installing Oh-my-fish. Please check the installation output for more information."
@@ -124,4 +124,5 @@ select fish_choice in "Yes" "No"; do
             ;;
     esac
     break
-donecho "You are now ready to start your journey. [Termux Setup Complete]"
+done
+echo "You are now ready to start your journey. [Termux Setup Complete]"
