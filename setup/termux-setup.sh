@@ -124,7 +124,7 @@ sleep 5
 
 termux-reload-settings
 echo "But......"
-sleep 10
+sleep 5
 
 # Prompt to install Oh-my-fish
 echo "Would you like to install Oh-my-fish?"
