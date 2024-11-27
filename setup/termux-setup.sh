@@ -55,17 +55,16 @@ select install_choice in "Yes" "No"; do
     break
 done
 
-# Prompt to install Kickstart
 if pkg info -I neovim >/dev/null 2>&1; then
     echo "Now you have your grimoire, lets kickstart your journey. I have something here to get you started. Would you like to see?"
     select kickstart_choice in "Yes" "No"; do
         case $kickstart_choice in
             "Yes")
                 echo "Conjouring spell Rekinde..."
-                if git clone -b android --single-branch https://github.com/drksch/kickstart.nvim.git ~/.config/nvim/
-	echo "Rekinde installed successfully. [Kickstart:Ok]"
-	else
-		echo "Strange...Something went wrong."
+                if git clone -b android --single-branch https://github.com/drksch/kickstart.nvim.git ~/.config/nvim/; then
+                    echo "Rekinde installed successfully. [Kickstart:Ok]"
+                else
+                    echo "Strange...Something went wrong."
                 fi
                 ;;
             "No")
