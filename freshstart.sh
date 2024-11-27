@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo "It seems that you have been caught by Truck-kun. You have to choose the new world you want to live in. Choose wisely!"
-	select os in "Linux" "Android" "Termux" "Windows" "MacOS" "Give me a moment"; do
+	select os in "Linux" "Termux" "Windows" "MacOS" "Give me a moment"; do
 		case $os in
 			"Linux")
-				./setup/linux-setup.sh
+				bash ./setup/linux-setup.sh
 				;;
 			"Termux")
-				./setup/termux-setup.sh
+				bash ./setup/termux-setup.sh
 				;;
 			"Windows")
-				./setup/windows-setup.sh
+				bash ./setup/windows-setup.sh
 				;;
 			"MacOS")
 				echo "MacOS is not supported yet"
@@ -26,11 +26,6 @@ echo "It seems that you have been caught by Truck-kun. You have to choose the ne
 
 
 
-##1. change repo
-echo Did you set the repo
-##2. Foreword update && upgrade -y
-echo Updating packages
-##3. 1st Chapter: A fresh Start!
-## pkg install neovim git gh
+
 
 
