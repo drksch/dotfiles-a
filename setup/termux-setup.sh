@@ -126,7 +126,6 @@ termux-reload-settings
 echo "But......"
 sleep 10
 
-echo "Do you want 
 # Prompt to install Oh-my-fish
 echo "Would you like to install Oh-my-fish?"
 select ohmyfish_choice in "Yes" "No"; do
