@@ -36,7 +36,7 @@ select install_choice in "Yes" "No"; do
         "Yes")
             echo "Here you go, adventuer. So tools to help you survive"
             # Gather all non-installed programs in one command
-            packages_to_install=$(for package in neovim git cmake stylua lua-language-server nodejs-lts npm which; do
+            packages_to_install=$(for package in neovim git cmake stylua lua-language-server nodejs-lts which; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
                     echo -n "$package "
                 fi
@@ -63,9 +63,9 @@ if pkg info -I neovim >/dev/null 2>&1; then
             "Yes")
                 echo "Conjouring spell Rekinde..."
                 if git clone -b android --single-branch https://github.com/drksch/kickstart.nvim.git ~/.config/nvim/
-			echo "Rekinde installed successfully. [Kickstart:Ok]"
-		else
-			echo "Strange...Something went wrong."
+	echo "Rekinde installed successfully. [Kickstart:Ok]"
+	else
+		echo "Strange...Something went wrong."
                 ;;
             "No")
                 echo "Rekinde not installed."
