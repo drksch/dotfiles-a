@@ -76,45 +76,52 @@ if pkg info -I neovim >/dev/null 2>&1; then
 fi
 
 # Custom Terminal
-#if [ -d ~/.config ]; then
-    echo "Would you like to install dotfiles and other tools?"
-    select dotfiles_choice in "Yes" "No"; do
-        case $dotfiles_choice in
-            "Yes")
-                echo "Installing dotfiles and other tools..."
-                # Install Fish, Starship, Tealdeer, and Fastfetch
-                if pkg install -y fish starship tealdeer fastfetch; then
-                    echo "Fish, Starship, Tealdeer, and Fastfetch installed successfully."
-                else
-                    echo "Error installing Fish, Starship, Tealdeer, and Fastfetch. Please check the package manager output for more information."
-                fi
+# Prompt to install dotfiles and other tools
+echo "Would you like to install a custom terminal?"
+select dotfiles_choice in "Yes" "No"; do
+    case $dotfiles_choice in
+        "Yes")
+            echo "Installing dotfiles and other tools..."
+            # Clone dotfiles repository and copy to ~/.config
+            if [ -d ~/.config/dotfiles ]; then
+                rm -rf ~/.config/dotfiles
+            fi
+            if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
+                echo "Dotfiles cloned successfully."
+                cp -r ~/.config/dotfiles/* ~/.config/
+            else
+                echo "Error cloning dotfiles. Please check the Git output for more information."
+            fi
+            ;;
+        "No")
+            echo "Dotfiles and other tools not installed."
+            ;;
+    esac
+    break
+done
 
-                # Install Oh-my-fish
-                if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
-                    echo "Oh-my-fish installed successfully."
-                else
-                    echo "Error installing Oh-my-fish. Please check the installation output for more information."
-                fi
+# Prompt to install Fish shell
+echo "Would you like to install Fish shell?"
+select fish_choice in "Yes" "No"; do
+    case $fish_choice in
+        "Yes")
+            # Install Fish, Starship, Tealdeer, and Fastfetch
+            if pkg install -y fish starship tealdeer fastfetch; then
+                echo "Fish, Starship, Tealdeer, and Fastfetch installed successfully."
+            else
+                echo "Error installing Fish, Starship, Tealdeer, and Fastfetch. Please check the package manager output for more information."
+            fi
 
-                # Clone dotfiles repository and copy to ~/.config
-                if [ -d ~/.config/dotfiles ]; then
-                    rm -rf ~/.config/dotfiles
-                fi
-                if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
-                    echo "Dotfiles cloned successfully."
-		    mv ~/.config/dotfiles/font.ttf ~/.termux/
-		    echo "Font installed successfully."
-		    cp -r ~/.config/dotfiles/* ~/.config/
-		    echo "Dotfiles copied to ~/.config. [Dotfiles:Ok]"
-                else
-                    echo "Error cloning dotfiles. Please check the Git output for more information."
-                fi
-                ;;
-            "No")
-                echo "Dotfiles and other tools not installed."
-                ;;
-        esac
-        break
-    done
-#fi
-echo "You are now ready to start your journey. [Termux Setup Complete]"
+            # Install Oh-my-fish
+            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
+                echo "Oh-my-fish installed successfully."
+            else
+                echo "Error installing Oh-my-fish. Please check the installation output for more information."
+            fi
+            ;;
+        "No")
+            echo "Fish shell not installed."
+            ;;
+    esac
+    break
+donecho "You are now ready to start your journey. [Termux Setup Complete]"
