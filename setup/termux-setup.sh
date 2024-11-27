@@ -25,8 +25,7 @@ select choice in "Yes" "No"; do
 done
 
 echo "Let's upgrade your base system with some added authorization."
-pkg upgrade -y
-pkg install gh which -y
+pkg upgrade -y --force-upgrade && pkg install -y gh which openssh wget
 echo "Done...Now it is best to give you starting equipment..:"
 
 # Prompt to install packages
@@ -36,7 +35,7 @@ select install_choice in "Yes" "No"; do
         "Yes")
             echo "Here you go, adventuer. So tools to help you survive"
             # Gather all non-installed programs in one command
-            packages_to_install=$(for package in neovim git cmake stylua lua-language-server nodejs-lts which; do
+            packages_to_install=$(for package in neovim git cmake stylua lua-language-server nodejs-lts clang; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
                     echo -n "$package "
                 fi
