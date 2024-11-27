@@ -55,7 +55,7 @@ select install_choice in "Yes" "No"; do
     break
 done
 
-if pkg info -I neovim >/dev/null 2>&1; then
+#if pkg info -I neovim >/dev/null 2>&1; then
     echo "Now you have your grimoire, lets kickstart your journey. I have something here to get you started. Would you like to see?"
     select kickstart_choice in "Yes" "No"; do
         case $kickstart_choice in
@@ -73,7 +73,7 @@ if pkg info -I neovim >/dev/null 2>&1; then
         esac
         break
     done
-fi
+#fi
 
 # Custom Terminal
 # Prompt to install dotfiles and other tools
