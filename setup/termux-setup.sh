@@ -59,9 +59,9 @@ done
     select kickstart_choice in "Yes" "No"; do
         case $kickstart_choice in
             "Yes")
-                echo "Conjouring spell Rekinde..."
+                echo "Conjouring spell Rekindle..."
                 if git clone -b android --single-branch https://github.com/drksch/kickstart.nvim.git ~/.config/nvim/; then
-                    echo "Rekinde installed successfully. [Kickstart:Ok]"
+                    echo "Rekindle Magic Circle Casted. [Kickstart:Ok]"
                 else
                     echo "Strange...Something went wrong."
                 fi
@@ -86,9 +86,9 @@ select dotfiles_choice in "Yes" "No"; do
             fi
             if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
                 echo "Dotfiles cloned successfully."
-                cp -r ~/.config/dotfiles/* ~/.config/
+                cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,omf} ~/.config/
                 sleep 1
-                mv ~/.config/font.ttf ~/.termux
+                mv ~/.config/font.ttf ~/.termux/
             else
                 echo "Error cloning dotfiles. Please check the Git output for more information."
             fi
