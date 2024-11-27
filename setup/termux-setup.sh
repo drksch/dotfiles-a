@@ -25,7 +25,7 @@ select choice in "Yes" "No"; do
 done
 
 echo "Let's upgrade your base system with some added authorization."
-pkg upgrade -y --force-upgrade
+pkg upgrade -y
 pkg install -y gh which openssh wget
 echo "Done...Now it is best to give you starting equipment..:"
 
