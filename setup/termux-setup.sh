@@ -66,6 +66,7 @@ if pkg info -I neovim >/dev/null 2>&1; then
 	echo "Rekinde installed successfully. [Kickstart:Ok]"
 	else
 		echo "Strange...Something went wrong."
+                fi
                 ;;
             "No")
                 echo "Rekinde not installed."
