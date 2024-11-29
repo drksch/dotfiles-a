@@ -44,7 +44,7 @@ select install_choice in "Yes" "No"; do
             # Gather all non-installed programs in one command
             packages_to_install=$(for package in neovim git cmake stylua lua-language-server nodejs-lts clang; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
-                    echo -e ${DM} -n "$package "
+                    echo -n "$package "
                 fi
             done)
             if [ -n "$packages_to_install" ]; then
