@@ -93,7 +93,7 @@ select dotfiles_choice in "Yes" "No"; do
             fi
             if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
                 echo -e ${DM} "Dotfiles cloned successfully."${NC}
-                cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,omf} ~/.config/
+                cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,fastfetch} ~/.config/
                 sleep 1
                 mv ~/.config/font.ttf ~/.termux/
             else
@@ -127,11 +127,11 @@ select fish_choice in "Yes" "No"; do
 done
 
 echo -e ${DM} "You are now ready to start your journey. [Termux Setup Complete]"${NC}
-sleep 5
+sleep 3
 
 termux-reload-settings
 echo -e ${DM} "But......"${NC}
-sleep 5
+sleep 3
 
 # Prompt to install Oh-my-fish
 echo -e ${DM} "Would you like to install Oh-my-fish?"${NC}
@@ -140,6 +140,7 @@ select ohmyfish_choice in "Yes" "No"; do
         "Yes")
             if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
                 echo -e ${DM} "Oh-my-fish installed successfully."${NC}
+                cp -r ~/.config/omf ~/.config/
             else
                 echo -e ${DM} "Error installing Oh-my-fish. Please check the installation output for more information."${NC}
             fi
