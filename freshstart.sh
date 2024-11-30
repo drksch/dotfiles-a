@@ -17,25 +17,25 @@ echo -e "Shall we begin your journey again?\033[0m"
 
 select os in \
 	"\033[31mLinux-Deb\033[0m" \
-	"\033[34mLinux-Arch\033[0m" \
-	"\033[32mTermux-Android\033[0m" \
-	"\033[36mWindows\033[0m" \
-	"\033[30mMacOS\033[0m" \
+	"Linux-Arch" \
+	"Termux-Android" \
+	"Windows" \
+	"MacOS" \
 	"Give me a moment..." ; do
 	case @os in
-		"\033[31mLinux-Deb\033[0m")
+		"Linux-Deb")
 			bash ./setup/linuxd_setup.sh
 			;;
-		"\033[34mLinux-Arch\033[0m")
+		"Linux-Arch")
 			bash ./setup/linuxa_setup.sh
 			;;
-		"\033[32mTermux-Android\033[0m")
+		"Termux-Android")
 			bash ./setup/termux-setup.sh
 			;;
-		"\033[36mWindows\033[0m")
+		"Windows")
 			bash ./setup/windows-setup.sh
 			;;
-		"\033[30mMacOS\033[0m")
+		"MacOS")
 			bash ./setup/doyouhavemacmoney.sh
 			;;
 		"Give me a moment...")
