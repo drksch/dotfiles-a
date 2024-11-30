@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Start
-echo -e "\033[47;1mInsperata accidunt magis saepe quam quae speres"
+echo -e "\033[1mInsperata accidunt magis saepe quam quae speres"
 sleep 1
 
 echo -e "Hmm"
