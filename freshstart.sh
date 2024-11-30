@@ -16,18 +16,18 @@ sleep 2
 echo -e "Shall we begin your journey again?\033[0m"
 
 select os in \
-	"\033[31mLinux-Deb\033[0m" \
-	"Linux-Arch" \
+	"Arch-Heavy" \
+	"Arch-Light" \
 	"Termux-Android" \
 	"Windows" \
 	"MacOS" \
 	"Give me a moment..." ; do
 	case @os in
-		"Linux-Deb")
-			bash ./setup/linuxd_setup.sh
+		"Linux-Light")
+			bash ./setup/linuxh_setup.sh
 			;;
 		"Linux-Arch")
-			bash ./setup/linuxa_setup.sh
+			bash ./setup/linuxl_setup.sh
 			;;
 		"Termux-Android")
 			bash ./setup/termux-setup.sh
