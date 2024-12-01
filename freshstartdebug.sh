@@ -25,45 +25,45 @@ select os in \
   case $os in
     "Arch-Heavy")
       echo "Running script: ./setup/linuxh_setup.sh"
-      if [ -f "./setup/linuxh_setup.sh" ]; then
+      if [ -f "setup/linuxh_setup.sh" ]; then
         echo "Script found, running..."
-        bash ./setup/linuxh_setup.sh
+        bash setup/linuxh_setup.sh
       else
         echo "Error: Script not found!"
       fi
       ;;
     "Arch-Light")
       echo "Running script: ./setup/linuxl_setup.sh"
-      if [ -f "./setup/linuxl_setup.sh" ]; then
+      if [ -f "setup/linuxl_setup.sh" ]; then
         echo "Script found, running..."
-        bash ./setup/linuxl_setup.sh
+        bash setup/linuxl_setup.sh
       else
         echo "Error: Script not found!"
       fi
       ;;
     "Termux-Android")
       echo "Running script: ./setup/termux-setup.sh"
-      if [ -f "./setup/termux-setup.sh" ]; then
+      if [ -f "setup/termux-setup.sh" ]; then
         echo "Script found, running..."
-        bash ./setup/termux-setup.sh
+        bash setup/termux-setup.sh
       else
         echo "Error: Script not found!"
       fi
       ;;
     "Windows")
       echo "Running script: ./setup/windows-setup.sh"
-      if [ -f "./setup/windows-setup.sh" ]; then
+      if [ -f "setup/windows-setup.sh" ]; then
         echo "Script found, running..."
-        bash ./setup/windows-setup.sh
+        bash setup/windows-setup.sh
       else
         echo "Error: Script not found!"
       fi
       ;;
     "MacOS")
       echo "Running script: ./setup/doyouhavemacmoney.sh"
-      if [ -f "./setup/doyouhavemacmoney.sh" ]; then
+      if [ -f "setup/doyouhavemacmoney.sh" ]; then
         echo "Script found, running..."
-        bash ./setup/doyouhavemacmoney.sh
+        bash setup/doyouhavemacmoney.sh
       else
         echo "Error: Script not found!"
       fi
