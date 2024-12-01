@@ -161,7 +161,7 @@ select greeter_tui in "Install" "Skip"; do
     case $greeter_tui in
         "Install")
             sudo pacman -S --noconfirm --needed greetd-tuigreet
-            cd installed_dir
+            cd $installed_dir
             sudo mv -fi config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
         ;;
@@ -183,6 +183,7 @@ select fish_choice in "Yes" "No"; do
             else
                 echo -e ${DM} "Error installing Fish, Starship, tldr, and Fastfetch. Please check the package manager output for more information."${NC}
             fi
+            done
             ;;
         "No")
             echo -e ${DM} "Fish shell not installed."${NC}
