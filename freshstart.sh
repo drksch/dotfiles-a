@@ -24,10 +24,10 @@ select os in \
 	"Give me a moment..." ; do
 	case @os in
 		"Arch-Heavy")
-			bash ./setup/linuxh_setup.sh
+			bash ./setup/linuxh-setup.sh
 			;;
 		"Arch-Light")
-			bash ./setup/linuxl_setup.sh
+			bash ./setup/linuxl-setup.sh
 			;;
 		"Termux-Android")
 			bash ./setup/termux-setup.sh
