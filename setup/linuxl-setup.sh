@@ -28,8 +28,10 @@ select pacman_init in "Install" "Skip"; do
             sudo pacman-key --init
             sudo pacman-key --populate
             sudo pacman -Syyu archlinux-keyring
+        ;;
         "Skip")
             echo -e ${DM} "Skipping Pacman init. [Skip]"${NC}
+        ;;
     esac
     break
 done
