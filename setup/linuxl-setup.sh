@@ -191,6 +191,32 @@ select fish_choice in "Yes" "No"; do
     esac
 done
 
+# Custom Terminal
+# Prompt to install dotfiles and other tools
+echo -e ${DM} "Would you like to install a custom terminal?"${NC}
+select dotfiles_choice in "Yes" "No"; do
+    case $dotfiles_choice in
+        "Yes")
+            echo -e ${DM} "Installing dotfiles and other tools..."${NC}
+            # Clone dotfiles repository and copy to ~/.config
+            if [ -d ~/.config/dotfiles ]; then
+                rm -rf ~/.config/dotfiles
+            fi
+            if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
+                echo -e ${DM} "Dotfiles cloned successfully."${NC}
+                cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,fastfetch} ~/.config/
+                sleep 1
+            else
+                echo -e ${DM} "Error cloning dotfiles. Please check the Git output for more information."${NC}
+            fi
+            ;;
+        "No")
+            echo -e ${DM} "Dotfiles and other tools not installed."${NC}
+            ;;
+    esac
+    break
+done
+
 #"Setting Environment Variables"
 if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
         echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
