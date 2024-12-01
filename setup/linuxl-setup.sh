@@ -70,7 +70,8 @@ if grep -q "chaotic-aur" /etc/pacman.conf; then
   sudo pacman -S --noconfirm --needed git
   sudo pacman -S --noconfirm --needed pacseek
   sudo pacman -S --noconfirm --needed npm
-  #sudo pacman -S --noconfirm --needed 
+  #sudo pacman -S --noconfirm --needed unzip
+  sudo pacman -S --noconfirm --needed clang
   #fonts
   sudo pacman -S --noconfirm --needed ttf-intone-nerd 
   sudo pacman -S --noconfirm --needed ttf-luciole 
@@ -88,13 +89,13 @@ else
     sudo pacman -S --noconfirm --needed git go base-devel
     git clone https://aur.archlinux.org/yay.git
     cd yay
-    makepkg -sir
+    makepkg -sir --noconfitm
     cd ..
     rm -rf yay
   else
     echo -e "${DM}Yay is already installed.${NC}"
   fi
-  sudo yay -S --noconfirm pacseek ttf-intone-nerd ttf-luciole ttf-atkinson-hyperlegible zen-brower-bin arch-palemoon-search
+  sudo yay -S --noconfirm pacseek ttf-intone-nerd ttf-luciole ttf-atkinson-hyperlegible zen-brower-bin arch-palemoon-search palemoon clang
 fi
 
 echo -e ${DM} "Install Basic Workflow?"${NC}
@@ -104,15 +105,19 @@ select install_choice in "Install" "Skip"; do
             echo -e ${DM} "Installing Tools. Downloading...."${NC}
             # Gather all non-installed programs in one command
             PKG_INSTALL=(
-                neovim
-                zram-generator
-                gittyup
+                bat
+                eza
+                fd
+                fzf
+                gcc
                 gh
                 ghq
-                eza
-                fzf
-                fd
-                bat
+                gittyup
+                make
+                neovim
+                ripgrep
+                unzip
+                meld
             )
             for package in "${PACKAGES_TO_INSTALL_LIST[@]}"; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
@@ -125,13 +130,35 @@ select install_choice in "Install" "Skip"; do
     esac
     break
 done
+sleep 2
+
+echo -e ${DM} "Install Kickstart"${NC}
+    select kickstart_choice in "Yes" "No"; do
+        case $kickstart_choice in
+            "Yes")
+                echo -e ${DM} "Conjouring spell Rekindle..."${NC}
+                if git clone -b master --single-branch https://github.com/drksch/kickstart.nvim.git ~/.config/nvim/; then
+                    echo -e ${DM} "Kickstart: Installed"${NC}
+                else
+                    echo -e ${DM} "Strange...Something went wrong."${NC}
+                fi
+                ;;
+            "No")
+                echo -e ${DM} "Kickstart Not Installed."${NC}
+                ;;
+        esac
+        break
+    done
+sleep 2
 
 #install tuigreet
 select greeter_tui in "Install" "Skip"; do
     case $greeter_tui in
         "Install")
             sudo pacman -S --noconfirm --needed greetd-tuigreet
-            sudo mv -
+            cd installed_dir
+            cd ..
+            sudo mv -fi/config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
         ;;
         "Skip")
