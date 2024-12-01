@@ -26,19 +26,19 @@ select os in \
   "Give me a moment..." ; do
   case $os in
     "Arch-Heavy")
-      echo "Running script: $installed_dir/setup/linuxh_setup.sh"
-      if [ -f "$installed_dir/setup/linuxh_setup.sh" ]; then
+      echo "Running script: $installed_dir/setup/linuxh-setup.sh"
+      if [ -f "$installed_dir/setup/linuxh-setup.sh" ]; then
         echo "Script found, running..."
-        bash $installed_dir/setup/linuxh_setup.sh
+        bash $installed_dir/setup/linuxh-setup.sh
       else
         echo "Error: Script not found!"
       fi
       ;;
     "Arch-Light")
-      echo "Running script: $installed_dir/setup/linuxl_setup.sh"
-      if [ -f "$installed_dir/setup/linuxl_setup.sh" ]; then
+      echo "Running script: $installed_dir/setup/linuxl-setup.sh"
+      if [ -f "$installed_dir/setup/linuxl-setup.sh" ]; then
         echo "Script found, running..."
-        bash $installed_dir/setup/linuxl_setup.sh
+        bash $installed_dir/setup/linuxl-setup.sh
       else
         echo "Error: Script not found!"
       fi
