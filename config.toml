@@ -1,0 +1,6 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --remember-session --cmd /bin/sh --theme border=lightred;text=white;prompt=purple;time=orange;action=green;button=LightGray;container=black;input=white"
+user = "greeter"
