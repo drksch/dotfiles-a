@@ -24,19 +24,19 @@ select os in \
 	"Give me a moment..." ; do
 	case @os in
 		"Arch-Heavy")
-			bash /setup/linuxh_setup.sh
+			bash ./setup/linuxh_setup.sh
 			;;
 		"Arch-Light")
-			bash /setup/linuxl_setup.sh
+			bash ./setup/linuxl_setup.sh
 			;;
 		"Termux-Android")
-			bash /setup/termux-setup.sh
+			bash ./setup/termux-setup.sh
 			;;
 		"Windows")
-			bash /setup/windows-setup.sh
+			bash ./setup/windows-setup.sh
 			;;
 		"MacOS")
-			bash /setup/doyouhavemacmoney.sh
+			bash ./setup/doyouhavemacmoney.sh
 			;;
 		"Give me a moment...")
 			echo -e "Time wait for no man, even if he is just a spirit."
