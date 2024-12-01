@@ -64,7 +64,8 @@ sudo pacman -Rcns firefox --noconfirm
 sleep 3
 echo -e ${DM} "Installing needed packages"${NC}
 
-sudo pacman -Sc
+sudo pacman -Sc --noconfirm
+sleep 2
 
 if grep -q "chaotic-aur" /etc/pacman.conf; then
   echo -e "${DM}Chaotic AUR is installed, installing AUR based tools...."${NC}
@@ -127,12 +128,12 @@ select install_choice in "Install" "Skip"; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
                     sudo pacman -S --noconfirm --needed $package
                 fi
+            done
                 ;;
         "Skip")
             echo -e ${DM}"Hmm..Another time then."${NC}
             ;;
     esac
-    break
 done
 
 echo -e ${DM} "Install Kickstart"${NC}
