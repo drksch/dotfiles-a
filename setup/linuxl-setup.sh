@@ -134,6 +134,7 @@ select install_choice in "Install" "Skip"; do
             echo -e ${DM}"Hmm..Another time then."${NC}
             ;;
     esac
+    break
 done
 
 echo -e ${DM} "Install Kickstart"${NC}
