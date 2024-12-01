@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #This for use with ArchBang.
 #As of November 2024 it seems pretty good out of the box.
@@ -218,6 +218,3 @@ select ohmyfish_choice in "Yes" "No"; do
     esac
     break
 done
-#
-#
-#

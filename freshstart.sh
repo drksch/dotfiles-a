@@ -23,10 +23,10 @@ select os in \
 	"MacOS" \
 	"Give me a moment..." ; do
 	case @os in
-		"Linux-Light")
+		"Arch-Heavy")
 			bash ./setup/linuxh_setup.sh
 			;;
-		"Linux-Arch")
+		"Arch-Light")
 			bash ./setup/linuxl_setup.sh
 			;;
 		"Termux-Android")
