@@ -21,7 +21,8 @@ NC='\033[0m'
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-# 1. Prereqs: 
+# 1. Prereqs:
+echo -e ${DM}"Pacman Init?"${NC}
 select pacman_init in "Install" "Skip"; do
     case $pacman_init in
         "Install")
@@ -37,6 +38,7 @@ select pacman_init in "Install" "Skip"; do
 done
 
 #Install chaotic aur
+echo -e ${DM}"ChaoticAur?"${NC}
 select chaotic_aur in "Yes" "No"; do
     case $chaotic_aur in
         "Yes")
@@ -79,9 +81,9 @@ if grep -q "chaotic-aur" /etc/pacman.conf; then
   sudo pacman -S --noconfirm --needed ttf-luciole 
   sudo pacman -S --noconfirm --needed ttf-atkinson-hyperlegible
   #browser
-  sudo pacman -S --noconfirm --needed zen-browser-bin
-  sudo pacman -S --noconfirm --needed palemon
-  sudo pacman -S --noconfirm --needed arch-palemoon-search
+  #sudo pacman -S --noconfirm --needed zen-browser-bin
+  #sudo pacman -S --noconfirm --needed palemon-bin
+  #sudo pacman -S --noconfirm --needed arch-palemoon-search
 else
   echo "Chaotic AUR is not installed, skipping...."
   sleep 2
@@ -100,7 +102,7 @@ else
   sudo yay -S --noconfirm pacseek ttf-intone-nerd ttf-luciole ttf-atkinson-hyperlegible zen-brower-bin arch-palemoon-search palemoon clang
 fi
 
-echo -e ${DM} "Install Basic Workflow?"${NC}
+echo -e ${DM}"Install Basic Workflow?"${NC}
 select install_choice in "Install" "Skip"; do
     case $install_choice in
         "Install")
@@ -127,7 +129,7 @@ select install_choice in "Install" "Skip"; do
                 fi
                 ;;
         "Skip")
-            echo -e ${DM} "Hmm..Another time then."${NC}
+            echo -e ${DM}"Hmm..Another time then."${NC}
             ;;
     esac
     break
