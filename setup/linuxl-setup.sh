@@ -125,7 +125,7 @@ select install_choice in "Install" "Skip"; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
                     sudo pacman -S --noconfirm --needed $package
                 fi
-            ;;
+                ;;
         "Skip")
             echo -e ${DM} "Hmm..Another time then."${NC}
             ;;
