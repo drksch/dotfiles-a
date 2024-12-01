@@ -129,7 +129,7 @@ select install_choice in "Install" "Skip"; do
                 fi
                 ;;
         "Skip")
-            echo -e '${DM}Hmm..Another time then.${NC}'
+            echo -e ${DM}"Hmm..Another time then."${NC}
             ;;
     esac
     break
