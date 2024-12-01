@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Current working directory: $(pwd)"
 # Start
 echo -e "\033[1mInsperata accidunt magis saepe quam quae speres"
 sleep 1
