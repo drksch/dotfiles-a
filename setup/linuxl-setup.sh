@@ -157,7 +157,7 @@ select greeter_tui in "Install" "Skip"; do
         "Install")
             sudo pacman -S --noconfirm --needed greetd-tuigreet
             cd installed_dir
-            sudo mv -fi ./config.toml  /etc/greetd/
+            sudo mv -fi config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
         ;;
         "Skip")
