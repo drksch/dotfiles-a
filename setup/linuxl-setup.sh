@@ -157,8 +157,7 @@ select greeter_tui in "Install" "Skip"; do
         "Install")
             sudo pacman -S --noconfirm --needed greetd-tuigreet
             cd installed_dir
-            cd ..
-            sudo mv -fi/config.toml  /etc/greetd/
+            sudo mv -fi ./config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
         ;;
         "Skip")
@@ -168,6 +167,24 @@ select greeter_tui in "Install" "Skip"; do
     break
 done
 
+# Prompt to install Fish shell
+echo -e ${DM} "Would you like to install Fish shell?"${NC}
+select fish_choice in "Yes" "No"; do
+    case $fish_choice in
+        "Yes")
+            # Install Fish, Starship, Tealdeer, and Fastfetch
+            if sudo pacman -Sy fish starship tldr-go-client-git fastfetch pay-respects; then
+                echo -e ${DM} "Fish, Starship, tldr, and Fastfetch installed successfully."${NC}
+            else
+                echo -e ${DM} "Error installing Fish, Starship, tldr, and Fastfetch. Please check the package manager output for more information."${NC}
+            fi
+            ;;
+        "No")
+            echo -e ${DM} "Fish shell not installed."${NC}
+            ;;
+    esac
+    break
+done
 
 #"Setting Environment Variables"
 if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
@@ -182,6 +199,25 @@ if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
 fi
 #
 #
+
+# Prompt to install Oh-my-fish
+echo -e ${DM} "Would you like to install Oh-my-fish?"${NC}
+select ohmyfish_choice in "Yes" "No"; do
+    case $ohmyfish_choice in
+        "Yes")
+            if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
+                echo -e ${DM} "Oh-my-fish installed successfully."${NC}
+                cp -r ~/.config/dotfiles/omf ~/.config/
+            else
+                echo -e ${DM} "Error installing Oh-my-fish. Please check the installation output for more information."${NC}
+            fi
+            ;;
+        "No")
+            echo -e ${DM} "Oh-my-fish not installed."${NC}
+            ;;
+    esac
+    break
+done
 #
 #
 #
