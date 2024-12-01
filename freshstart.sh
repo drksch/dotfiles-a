@@ -1,4 +1,5 @@
 #!/bin/bash
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 #Start
 echo -e "\033[1mInsperata accidunt magis saepe quam quae speres"
@@ -24,19 +25,19 @@ select os in \
 	"Give me a moment..." ; do
 	case @os in
 		"Arch-Heavy")
-			bash ./setup/linuxh-setup.sh
+			bash $installed_dir/setup/linuxh-setup.sh
 			;;
 		"Arch-Light")
-			bash ./setup/linuxl-setup.sh
+			bash $installed_dir/setup/linuxl-setup.sh
 			;;
 		"Termux-Android")
-			bash ./setup/termux-setup.sh
+			bash $installed_dir/setup/termux-setup.sh
 			;;
 		"Windows")
-			bash ./setup/windows-setup.sh
+			bash $installed_dir/setup/windows-setup.sh
 			;;
 		"MacOS")
-			bash ./setup/doyouhavemacmoney.sh
+			bash $installed_dir/setup/doyouhavemacmoney.sh
 			;;
 		"Give me a moment...")
 			echo -e "Time wait for no man, even if he is just a spirit."
