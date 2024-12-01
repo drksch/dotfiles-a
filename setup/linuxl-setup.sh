@@ -123,7 +123,7 @@ select install_choice in "Install" "Skip"; do
                 unzip
                 meld
             )
-            for package in "${PACKAGES_TO_INSTALL_LIST[@]}"; do
+            for package in "${PKG_INSTALL[@]}"; do
                 if ! pkg info -I $package >/dev/null 2>&1; then
                     sudo pacman -S --noconfirm --needed $package
                 fi
@@ -134,7 +134,6 @@ select install_choice in "Install" "Skip"; do
     esac
     break
 done
-sleep 2
 
 echo -e ${DM} "Install Kickstart"${NC}
     select kickstart_choice in "Yes" "No"; do
