@@ -178,7 +178,8 @@ select fish_choice in "Yes" "No"; do
     case $fish_choice in
         "Yes")
             # Install Fish, Starship, Tealdeer, and Fastfetch
-            if sudo pacman -S --noconfirm --needed fish starship tldr-go-client-git fastfetch pay-respects; then
+            if sudo pacman -S --noconfirm --needed fish starship tealdeer fastfetch
+            curl -sSfL https://raw.githubusercontent.com/iffse/pay-respects/main/install.sh | sh; then
                 echo -e ${DM}"Fish, Starship, tldr, and Fastfetch installed successfully."${NC}
             else
                 echo -e ${DM}"Error installing Fish, Starship, tldr, and Fastfetch. Please check the package manager output for more information."${NC}
