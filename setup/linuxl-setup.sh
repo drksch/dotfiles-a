@@ -189,6 +189,7 @@ select fish_choice in "Yes" "No"; do
             echo -e ${DM} "Fish shell not installed."${NC}
             ;;
     esac
+    break
 done
 
 # Custom Terminal
