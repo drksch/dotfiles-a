@@ -59,7 +59,7 @@ done
 #Needed Installs
 sudo pacman -Syyu
 sleep 2
-echo -e ${DM} "Remove Firefox"${NC}
+echo -e ${DM}"Remove Firefox"${NC}
 sudo pacman -Rcns firefox --noconfirm
 sleep 3
 echo -e ${DM} "Installing needed packages"${NC}
@@ -67,7 +67,7 @@ echo -e ${DM} "Installing needed packages"${NC}
 sudo pacman -Sc
 
 if grep -q "chaotic-aur" /etc/pacman.conf; then
-  echo ${DM}"Chaotic AUR is installed, installing AUR based tools...."${NC}
+  echo -e "${DM}Chaotic AUR is installed, installing AUR based tools...."${NC}
   #Base Downloads
   sudo pacman -S --noconfirm --needed yay
   sudo pacman -S --noconfirm --needed wget
