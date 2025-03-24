@@ -42,8 +42,8 @@ echo -e ${DM}"ChaoticAur?"${NC}
 select chaotic_aur in "Yes" "No"; do
     case $chaotic_aur in
         "Yes")
-            sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-            sudo pacman-key --lsign-key 3056513887B78AEB
+            sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com --noconfirm
+            sudo pacman-key --lsign-key 3056513887B78AEB --noconfirm
             sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
             sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
             sleep 2
@@ -77,6 +77,7 @@ if grep -q "chaotic-aur" /etc/pacman.conf; then
   sudo pacman -S --noconfirm --needed npm
   #sudo pacman -S --noconfirm --needed unzip
   sudo pacman -S --noconfirm --needed clang
+  sudo pacman -S --noconfirm --needed ghostty
   #fonts
   sudo pacman -S --noconfirm --needed ttf-intone-nerd 
   sudo pacman -S --noconfirm --needed ttf-luciole 
@@ -222,19 +223,17 @@ select dotfiles_choice in "Yes" "No"; do
 done
 
 #"Setting Environment Variables"
-  if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
         echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
         echo "EDITOR=${TERM}" | sudo tee -a $HOME/.config/openbox/environment
         echo "BROWSER=zen-browser" | sudo tee -a $HOME/.config/openbox/environment
-  fi
-done
-
-  if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+else
+    if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
         echo -e ${NEWLINEVAR} | sudo tee -a etc/environment
         echo "EDITOR=${TERM}" | sudo tee -a etc/environment
         echo "BROWSER=zen-browser" | sudo tee -a etc/environment
-  fi
-done
+    fi
+fi
 
 
 
