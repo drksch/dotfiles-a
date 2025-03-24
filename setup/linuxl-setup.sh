@@ -236,7 +236,7 @@ done
 #        echo "EDITOR=${TERM}" | sudo tee -a etc/environment
 #        echo "BROWSER=zen-browser" | sudo tee -a etc/environment
 #    fi
-#fi
+#
 
 
 
@@ -247,7 +247,9 @@ select ohmyfish_choice in "Yes" "No"; do
         "Yes")
             if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
                 echo -e ${DM} "Oh-my-fish installed successfully."${NC}
-                cp -r ~/.config/dotfiles/omf ~/.config/
+                cd $installed_dir
+                echo $installed_dir
+                cp -r omf ~/.config
             else
                 echo -e ${DM} "Error installing Oh-my-fish. Please check the installation output for more information."${NC}
             fi
