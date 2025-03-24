@@ -223,17 +223,18 @@ select dotfiles_choice in "Yes" "No"; do
 done
 
 #"Setting Environment Variables"
-if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
-        echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
-        echo "EDITOR=${TERM}" | sudo tee -a $HOME/.config/openbox/environment
-        echo "BROWSER=zen-browser" | sudo tee -a $HOME/.config/openbox/environment
-else
-    if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
-        echo -e ${NEWLINEVAR} | sudo tee -a etc/environment
-        echo "EDITOR=${TERM}" | sudo tee -a etc/environment
-        echo "BROWSER=zen-browser" | sudo tee -a etc/environment
-    fi
-fi
+#if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+#       echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
+#        echo "EDITOR=${TERM}" | sudo tee -a $HOME/.config/openbox/environment
+#        echo "BROWSER=zen-browser" | sudo tee -a $HOME/.config/openbox/environment
+#    fi
+#else
+#    if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+#        echo -e ${NEWLINEVAR} | sudo tee -a etc/environment
+#        echo "EDITOR=${TERM}" | sudo tee -a etc/environment
+#        echo "BROWSER=zen-browser" | sudo tee -a etc/environment
+#    fi
+#fi
 
 
 
