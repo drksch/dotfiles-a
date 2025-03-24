@@ -166,6 +166,8 @@ select greeter_tui in "Install" "Skip"; do
             sudo mkdir -m 755 -v /etc/greetd
             sleep 1
             cd $installed_dir
+            print $installed_dir
+            sleep 5
             sudo mv -fi config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
         ;;
