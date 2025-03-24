@@ -157,10 +157,13 @@ echo -e ${DM} "Install Kickstart"${NC}
 sleep 2
 
 #install tuigreet
+echo -e ${DM} "Install Tui Greeter?"${NC}
 select greeter_tui in "Install" "Skip"; do
     case $greeter_tui in
         "Install")
             sudo pacman -S --noconfirm --needed greetd-tuigreet
+            sudo mkdir -m 755 -v /etc/greetd
+            sleep 1
             cd $installed_dir
             sudo mv -fi config.toml  /etc/greetd/
             sudo systemctl enable -f greetd.service
@@ -219,18 +222,21 @@ select dotfiles_choice in "Yes" "No"; do
 done
 
 #"Setting Environment Variables"
-if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+  if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
         echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
         echo "EDITOR=${TERM}" | sudo tee -a $HOME/.config/openbox/environment
         echo "BROWSER=zen-browser" | sudo tee -a $HOME/.config/openbox/environment
-fi
-if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
+  fi
+done
+
+  if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
         echo -e ${NEWLINEVAR} | sudo tee -a etc/environment
         echo "EDITOR=${TERM}" | sudo tee -a etc/environment
         echo "BROWSER=zen-browser" | sudo tee -a etc/environment
-fi
-#
-#
+  fi
+done
+
+
 
 # Prompt to install Oh-my-fish
 echo -e ${DM} "Would you like to install Oh-my-fish?"${NC}
