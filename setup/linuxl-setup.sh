@@ -213,6 +213,7 @@ select dotfiles_choice in "Yes" "No"; do
                 echo -e ${DM} "Dotfiles cloned successfully."${NC}
                 cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,fastfetch} ~/.config/
                 sleep 1
+                rm ~/.config/font.tff 
             else
                 echo -e ${DM} "Error cloning dotfiles. Please check the Git output for more information."${NC}
             fi
@@ -247,9 +248,9 @@ select ohmyfish_choice in "Yes" "No"; do
         "Yes")
             if curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish; then
                 echo -e ${DM} "Oh-my-fish installed successfully."${NC}
-                cd $installed_dir
-                echo $installed_dir
-                cp -r omf ~/.config
+                #cd $installed_dir
+                #reecho $installed_dir
+                cp -r ~/.config/dotfiles/omf ~/.config/
             else
                 echo -e ${DM} "Error installing Oh-my-fish. Please check the installation output for more information."${NC}
             fi
