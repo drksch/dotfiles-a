@@ -178,25 +178,7 @@ select greeter_tui in "Install" "Skip"; do
     break
 done
 
-# Prompt to install Fish shell
-echo -e ${DM} "Would you like to install Fish shell?"${NC}
-select fish_choice in "Yes" "No"; do
-    case $fish_choice in
-        "Yes")
-            # Install Fish, Starship, Tealdeer, and Fastfetch
-            if sudo pacman -S --noconfirm --needed fish starship tealdeer fastfetch
-            curl -sSfL https://raw.githubusercontent.com/iffse/pay-respects/main/install.sh | sh; then
-                echo -e ${DM}"Fish, Starship, tldr, and Fastfetch installed successfully."${NC}
-            else
-                echo -e ${DM}"Error installing Fish, Starship, tldr, and Fastfetch. Please check the package manager output for more information."${NC}
-            fi
-            ;;
-        "No")
-            echo -e ${DM} "Fish shell not installed."${NC}
-            ;;
-    esac
-    break
-done
+
 
 # Custom Terminal
 # Prompt to install dotfiles and other tools
@@ -225,21 +207,28 @@ select dotfiles_choice in "Yes" "No"; do
     break
 done
 
-#"Setting Environment Variables"
-#if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
-#       echo -e ${NEWLINEVAR} | sudo tee -a $HOME/.config/openbox/environment
-#        echo "EDITOR=${TERM}" | sudo tee -a $HOME/.config/openbox/environment
-#        echo "BROWSER=zen-browser" | sudo tee -a $HOME/.config/openbox/environment
-#    fi
-#else
-#    if | grep -q "XDG_CURRENT_DESKTOP" $HOME/.config/openbox/environment; then
-#        echo -e ${NEWLINEVAR} | sudo tee -a etc/environment
-#        echo "EDITOR=${TERM}" | sudo tee -a etc/environment
-#        echo "BROWSER=zen-browser" | sudo tee -a etc/environment
-#    fi
-#
-
-
+# Prompt to install Fish shell
+echo -e ${DM} "Would you like to install Fish shell?"${NC}
+select fish_choice in "Yes" "No"; do
+    case $fish_choice in
+        "Yes")
+            # Install Fish, Starship, Tealdeer, and Fastfetch
+            if sudo pacman -S --noconfirm --needed fish starship tealdeer fastfetch
+            curl -sSfL https://raw.githubusercontent.com/iffse/pay-respects/main/install.sh | sh; then
+                echo 'export PATH=$PATH:~/.local/bin' | tee -a ~/.bashrc
+                echo 'eval "$(pay-respects bash --alias)"' | tee -a ~/.bashrc
+                sleep 3
+                echo -e ${DM}"Fish, Starship, tldr, and Fastfetch installed successfully."${NC}
+            else
+                echo -e ${DM}"Error installing Fish, Starship, tldr, and Fastfetch. Please check the package manager output for more information."${NC}
+            fi
+            ;;
+        "No")
+            echo -e ${DM} "Fish shell not installed."${NC}
+            ;;
+    esac
+    break
+done
 
 # Prompt to install Oh-my-fish
 echo -e ${DM} "Would you like to install Oh-my-fish?"${NC}
