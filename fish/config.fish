@@ -8,4 +8,6 @@ fastfetch
 
 pay-respects fish --alias wda --nocnf| source
 
+fzf --fish | source
+
 ## thefuck --alias | source
