@@ -216,7 +216,7 @@ select fish_choice in "Yes" "No"; do
             if sudo pacman -S --noconfirm --needed fish starship tealdeer fastfetch
             curl -sSfL https://raw.githubusercontent.com/iffse/pay-respects/main/install.sh | sh; then
                 echo 'export PATH=$PATH:~/.local/bin' | tee -a ~/.bashrc
-                echo 'eval "$(pay-respects bash --alias wda)"' | tee -a ~/.bashrc
+                echo 'eval "$(pay-respects bash --alias wda --nocnf)"' | tee -a ~/.bashrc
                 sleep 3
                 echo -e ${DM}"Fish, Starship, tldr, and Fastfetch installed successfully."${NC}
             else
