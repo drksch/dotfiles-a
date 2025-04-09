@@ -250,3 +250,6 @@ select ohmyfish_choice in "Yes" "No"; do
     esac
     break
 done
+
+echo -e "Test"
+rm -rf $installed_dir
