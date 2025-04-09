@@ -193,7 +193,7 @@ select dotfiles_choice in "Yes" "No"; do
             fi
             if git clone https://github.com/drksch/dotfiles-a.git ~/.config/dotfiles; then
                 echo -e ${DM} "Dotfiles cloned successfully."${NC}
-                cp -r ~/.config/dotfiles/{starship.toml,font.ttf,fish,fastfetch} ~/.config/
+                cp -r ~/.config/dotfiles/{starship.toml,fish,fastfetch} ~/.config/
                 sleep 1
                 rm ~/.config/font.tff 
             else
